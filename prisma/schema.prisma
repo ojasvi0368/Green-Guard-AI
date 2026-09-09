@@ -1,0 +1,121 @@
+// Prisma Schema — GreenGuard AI Platform
+// PostgreSQL on Neon (serverless)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ────────────────────────────────────────────
+
+enum Role {
+  FARMER
+  GOVERNMENT
+  RESEARCHER
+}
+
+// ─── User ─────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String?
+  role      Role     @default(FARMER)
+  image     String?
+  farms     Farm[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // NextAuth fields (for OAuth)
+  emailVerified DateTime?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+// ─── NextAuth Models ──────────────────────────────────
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─── Farm ─────────────────────────────────────────────
+
+model Farm {
+  id        String     @id @default(cuid())
+  userId    String
+  name      String
+  location  String
+  polygonId String?
+  areaHa    Float?
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  farmData  FarmData[]
+  insights  Insight[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([userId])
+}
+
+// ─── FarmData (time-series satellite/weather data) ────
+
+model FarmData {
+  id           String   @id @default(cuid())
+  farmId       String
+  ndvi         Float?
+  weather      Json?
+  soilMoisture Float?
+  droughtRisk  Float?
+  farm         Farm     @relation(fields: [farmId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+
+  @@index([farmId, createdAt])
+}
+
+// ─── Insights (Gemini-generated) ──────────────────────
+
+model Insight {
+  id             String   @id @default(cuid())
+  farmId         String
+  insight        String   @db.Text
+  recommendation String   @db.Text
+  riskLevel      String?
+  farm           Farm     @relation(fields: [farmId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+
+  @@index([farmId, createdAt])
+}

@@ -1,0 +1,391 @@
+/* Farm Management Page Styles */
+.container {
+    min-height: 100vh;
+    background: var(--color-bg, #f0f4f1);
+    padding: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text, #1a2e1a);
+}
+
+.header p {
+    color: var(--color-text-muted, #6b7280);
+    margin-top: 0.25rem;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary, #10B981);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: opacity 0.2s;
+}
+
+.backLink:hover {
+    opacity: 0.8;
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.emptyIcon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.emptyState h2 {
+    font-size: 1.4rem;
+    color: var(--color-text, #1a2e1a);
+    margin-bottom: 0.5rem;
+}
+
+.emptyState p {
+    color: var(--color-text-muted, #6b7280);
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Farm Grid */
+.farmGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.farmCard {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.farmCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.farmCard.selected {
+    border-color: var(--color-primary, #10B981);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.farmCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.farmName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text, #1a2e1a);
+}
+
+.farmLocation {
+    font-size: 0.85rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-top: 0.25rem;
+}
+
+.farmBadge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #ECFDF5;
+    color: #059669;
+}
+
+.farmBadge.noPolygon {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.farmStats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.farmStat {
+    padding: 0.75rem;
+    background: #F9FAFB;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.farmStatValue {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text, #1a2e1a);
+}
+
+.farmStatLabel {
+    font-size: 0.7rem;
+    color: var(--color-text-muted, #6b7280);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.15rem;
+}
+
+/* Create Farm Modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    width: 95%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--color-text, #1a2e1a);
+}
+
+.formGroup {
+    margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--color-text, #1a2e1a);
+}
+
+.formGroup input,
+.formGroup select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    background: #FAFAFA;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    outline: none;
+    border-color: var(--color-primary, #10B981);
+    background: white;
+}
+
+.mapSection {
+    margin: 1.5rem 0;
+}
+
+.mapSection h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.mapHint {
+    font-size: 0.8rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-bottom: 0.75rem;
+}
+
+.formActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+/* Farm Detail Panel */
+.detailPanel {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-top: 2rem;
+}
+
+.detailHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.detailHeader h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.detailTabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tab {
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    background: #F3F4F6;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab.active {
+    background: var(--color-primary, #10B981);
+    color: white;
+}
+
+.dataGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.dataCard {
+    padding: 1rem;
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.dataCard.weather {
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+}
+
+.dataCard.drought {
+    background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+}
+
+.dataCardValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text, #1a2e1a);
+}
+
+.dataCardLabel {
+    font-size: 0.8rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-top: 0.25rem;
+}
+
+/* Insights Section */
+.insightsSection {
+    margin-top: 1.5rem;
+}
+
+.insightCard {
+    padding: 1rem;
+    background: #F0FDF4;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #10B981;
+}
+
+.insightCard.risk {
+    background: #FEF2F2;
+    border-left-color: #EF4444;
+}
+
+.insightCard h4 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.insightCard ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.insightCard li {
+    margin-bottom: 0.25rem;
+}
+
+/* Loading */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #E5E7EB;
+    border-top-color: var(--color-primary, #10B981);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .farmGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}

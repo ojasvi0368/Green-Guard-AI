@@ -1,0 +1,18 @@
+/* ===== NAVIGATION OVERLAY ===== */
+#nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.overlay-content {
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-primary);
+}

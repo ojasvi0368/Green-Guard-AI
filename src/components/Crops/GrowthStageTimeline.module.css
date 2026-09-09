@@ -1,0 +1,293 @@
+.timelineContainer {
+    background: #F0FDF4;
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 1.5rem;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2.5rem;
+    border: 1px solid #D1FAE5;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.timelineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.timelineTitle {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.timelineSubtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+.progressInfo {
+    text-align: right;
+}
+
+.progressLabel {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.progressValue {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Progress Bar */
+.progressBarContainer {
+    margin-bottom: 3rem;
+}
+
+.progressBarTrack {
+    height: 8px;
+    background: var(--color-surface-elevated);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progressBarFill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+/* Timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    margin-bottom: 2rem;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+    gap: 2rem;
+}
+
+.stageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.stageWrapper::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    bottom: -2rem;
+    width: 4px;
+    background: #E5E7EB;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.stageWrapper:last-child::after {
+    display: none;
+}
+
+.stageNode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.nodeCircle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    position: relative;
+    z-index: 2;
+    transition: all var(--transition-base);
+}
+
+.nodeCircle.completed {
+    background: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.nodeCircle.completed .nodeIcon {
+    color: white;
+    font-weight: 700;
+}
+
+.nodeCircle.current {
+    border-color: #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.nodeCircle.upcoming {
+    border-color: #9CA3AF;
+    background: white;
+}
+
+.nodeIcon {
+    font-size: 1.5rem;
+}
+
+.connectingLine {
+    display: none;
+}
+
+.stageInfo {
+    background: var(--color-surface-elevated);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    width: 100%;
+    min-height: 140px;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.stageInfo:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.stageName {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.currentBadge {
+    background: #3B82F6;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.stageDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detailItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.detailIcon {
+    font-size: 1rem;
+}
+
+.detailText {
+    color: var(--color-text-secondary);
+}
+
+.currentIndicator {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+}
+
+.pulseRing {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3B82F6;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.5);
+    }
+}
+
+/* Timeline Footer */
+.timelineFooter {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-surface-elevated);
+}
+
+.footerStat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footerIcon {
+    font-size: 1.2rem;
+}
+
+.footerText {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timelineContainer {
+        padding: 1.5rem;
+    }
+
+    .timelineHeader {
+        flex-direction: column;
+    }
+
+    .progressInfo {
+        text-align: left;
+    }
+
+    .nodeCircle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nodeIcon {
+        font-size: 1.2rem;
+    }
+
+    .timelineFooter {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
