@@ -502,8 +502,8 @@ export default function HomePage() {
                             <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Contact</h4>
                             <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
                                 📍 Uttar Pradesh, India<br />
-                                📧 info@protominds.com<br />
-                                📱 +91 9760-434089
+                                📧 info@unbound.com<br />
+                                📱 +91 9760-4340XX
                             </p>
                         </div>
                     </div>
